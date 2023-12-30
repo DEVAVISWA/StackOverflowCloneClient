@@ -11,6 +11,11 @@ function Login() {
   const loginHandler = (e) => {
     e.preventDefault()
     console.log(logIn)
+
+    setLogin({
+      email: '',
+      password: ''
+    })
   }
   return (
     <div>
