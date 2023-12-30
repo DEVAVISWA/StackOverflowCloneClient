@@ -1,4 +1,7 @@
 import React from 'react'
+// import { Link } from 'react-router-dom'
+import BodyDummyContent from './BodyDummyContent'
+import Footer from './Footer'
 import { Link } from 'react-router-dom'
 
 function NavBar() {
@@ -8,6 +11,7 @@ function NavBar() {
     const pleaseLogin = () => {
         alert('Please Login or Signup')
     }
+
     return (
         <div>
             {/* navbar */}
@@ -52,11 +56,17 @@ function NavBar() {
                         <input className="form-control me-2" type="search" placeholder="⌕ Search" aria-label="Search" id='searchBar' />
                         <Link className="btn btn-outline-primary" type="submit" id='padingLoginSignup' to='/login'>Login</Link>
                         <Link className="btn btn-primary" type="submit" id='padingLoginSignup' to='/signup'>Signup</Link>
+                        {/* <Routes>
+                            <Route path='/login' element={<Login/>} />
+                            <Route path='/signup' element={<Signup/>} />
+                        </Routes> */}
                     </form>
                 </div>
             </nav>
-
+            <BodyDummyContent />
+            <Footer />
         </div>
+        
     )
 }
 
