@@ -5,6 +5,8 @@ import NavBar from './Components/NavBar'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
+import Questions from './Components/Questions'
+import AskQuestion from './Components/AskQuestion'
 
 
 
@@ -15,9 +17,11 @@ function App() {
       <hr id='topLine' />
       <Router>
         <Routes>
-          <Route path='*' Component={NavBar} />
-          <Route path='/login' Component={Login} />
+          <Route path='/' Component={NavBar} />
+          <Route path='/login/*' Component={Login} />
           <Route path='/signup' Component={Signup} />
+          <Route path='/questions' Component={Questions} />
+          <Route path='/ask' Component={AskQuestion} />
         </Routes>
       </Router>
     </div>
