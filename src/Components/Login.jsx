@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 function Login() {
+
+  const [logIn, setLogin] = useState({
+    email: '',
+    password: ''
+  })
+
+  const loginHandler = (e) => {
+    e.preventDefault()
+    console.log(logIn)
+  }
   return (
     <div>
       <h3>Login Page</h3>
-      <form>
+      <form onSubmit={loginHandler}>
         <div>
           <label>Email</label> <br />
           <input
             type="email"
-            required />
+            required
+            value={logIn.email}
+            onChange={(e) => setLogin({ ...logIn, email: e.target.value })} />
         </div>
         <div>
           <label>Password</label> <br />
           <input
             type="password"
-            required />
+            required
+            value={logIn.password}
+            onChange={(e) => setLogin({ ...logIn, password: e.target.value })} />
         </div>
         <br />
         <button type='submit'>Login</button>
