@@ -12,7 +12,7 @@ function Questions() {
             <div className="container text-center">
                 <div className="row align-items-start">
                     <div className="col">
-                        <h2>Questions</h2>
+                        <h2>All Questions</h2>
                     </div>
                     <div className="col">
                         <button type="button" className="btn btn-primary" onClick={askQuestion}>Ask Question</button> <br /> <br />

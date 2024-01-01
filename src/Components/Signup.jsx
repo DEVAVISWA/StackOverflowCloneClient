@@ -14,12 +14,31 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault()
     console.log(signupForm)
-
-    setSignupForm({
-      displayName: '',
-      email: '',
-      password: ''
+    const signupBody = {
+      displayName: signupForm.displayName,
+      email: signupForm.email,
+      password: signupForm.password
+    }
+    const response = await fetch('http://127.0.0.1:3000/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(signupBody)
     })
+    const data = await response.json()
+    if (response.status == 200) {
+      console.log('Account created with new user')
+      console.log(data)
+      setSignupForm({
+        displayName: '',
+        email: '',
+        password: ''
+      })
+    } else {
+      console.log('error creating account')
+      console.log(data)
+    }
   }
 
   return (
