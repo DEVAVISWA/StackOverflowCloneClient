@@ -5,23 +5,38 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 
 function Login() {
 
-  const navigate= useNavigate()
+  const navigate = useNavigate()
 
   const [logIn, setLogin] = useState({
     email: '',
     password: ''
   })
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault()
     console.log(logIn)
 
-    navigate('/questions')
-    
-    setLogin({
-      email: '',
-      password: ''
+    const response = await fetch('http://127.0.0.1:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify(logIn)
     })
+    const data = await response.json()
+    if (response.status == 200) {
+      console.log('User logged in successfully')
+      console.log(data)
+      setLogin({
+        email: '',
+        password: ''
+      })
+      navigate('/questions')
+    } else {
+      console.log('error logging in user')
+      console.log(data)
+      alert("Invalid or wrong user details")
+    }
   }
   return (
     <div className="container text-center">

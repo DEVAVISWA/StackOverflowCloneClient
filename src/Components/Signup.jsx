@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboardQuestion, faTags, faTrophy, faUpDown } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 function Signup() {
+
+  const navigate= useNavigate()
 
   const [signupForm, setSignupForm] = useState({
     displayName: '',
@@ -14,6 +17,7 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault()
     console.log(signupForm)
+    
     const signupBody = {
       displayName: signupForm.displayName,
       email: signupForm.email,
@@ -35,6 +39,7 @@ function Signup() {
         email: '',
         password: ''
       })
+      navigate('/login')
     } else {
       console.log('error creating account')
       console.log(data)
