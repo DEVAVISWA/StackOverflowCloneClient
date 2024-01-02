@@ -63,7 +63,7 @@ function NavBar() {
                     </form>
                 </div>
             </nav>
-            <BodyDummyContent />
+            <BodyDummyContent />            
             <Footer />
         </div>
         

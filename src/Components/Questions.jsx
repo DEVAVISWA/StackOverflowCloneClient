@@ -1,14 +1,22 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Questions() {
+function Questions({ user, setUser, token, setToken }) {
     const navigate = useNavigate()
     const askQuestion = () => {
         console.log('button clicked')
         navigate('/ask')
     }
+    const logouthandler = () => {
+        setUser(null)
+        setToken(null)
+        window.localStorage.removeItem('user')
+        window.localStorage.removeItem('token')
+    }
     return (
         <div>
+            <b>Welcome {user.displayName}</b>
+            <button onClick={logouthandler}>Logout</button>
             <div className="container text-center">
                 <div className="row align-items-start">
                     <div className="col">
@@ -25,7 +33,7 @@ function Questions() {
                             </ul>
                         </nav>
                     </div>
-                </div>  
+                </div>
                 <div className="container text-center">
                     <div className="row">
                         <div className="col">
@@ -34,7 +42,7 @@ function Questions() {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }

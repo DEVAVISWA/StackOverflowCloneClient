@@ -1,11 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Questions from './Questions'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 
 
 function Login() {
 
-  const navigate = useNavigate()
+  const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('token')
+    const user = window.localStorage.getItem('user')
+    if (token && user) {
+      setUser(JSON.parse(user))
+      setToken(token)
+    }
+  }, [])
+  // const navigate = useNavigate()
 
   const [logIn, setLogin] = useState({
     email: '',
@@ -31,7 +42,12 @@ function Login() {
         email: '',
         password: ''
       })
-      navigate('/questions')
+      setToken(data.token)
+      setUser(data)
+      // navigate('/questi
+      ons')
+      window.localStorage.setItem('token', data.token)
+      window.localStorage.setItem('user', JSON.stringify(data))
     } else {
       console.log('error logging in user')
       console.log(data)
@@ -61,18 +77,16 @@ function Login() {
         <br />
         <button type='submit'>Login</button>
       </form>
-      <div>
-        Don’t have an account? <a href="http://localhost:5173/signup">Sign up</a>
-      </div>
-      {/* after login got to '/questions' */}
-      {/* <Routes >
-        <Route path='/questions' element={<Questions/>}/>
-      </Routes> */}
-      {/* {
-        setLogin ? (<Questions />)
-          :
-          <a href="http://localhost:5173/signup">Sign up</a>
-      } */}
+      {
+        user ? 
+        <Questions
+        user={user} setUser={setUser}
+        token={token} setToken={setToken} />
+        :
+          (<p>
+            Dont have an account? <a href="http://localhost:5173/signup">Sign up</a>
+          </p>)
+      }
     </div>
   )
 }
