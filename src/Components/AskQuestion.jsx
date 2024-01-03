@@ -1,21 +1,47 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function AskQuestion() {
-  const[question,setQuestion] = useState({
-    title:'',
-    details:''
+  const navigate= useNavigate()
+  const user = window.localStorage.getItem('user')
+  const userJson = JSON.parse(user)
+  const token = window.localStorage.getItem('token')
+  // console.log(token)
+  const [question, setQuestion] = useState({
+    title: '',
+    details: ''
   })
-  const handleQuestion = (e) => {
+  const handleQuestion = async (e) => {
     e.preventDefault()
     console.log('button clicked', question)
 
-    setQuestion ({
-      title:'',
-      details:''
-    })
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+    const newQuestionObj = {
+      title: question.title,
+      details: question.details
+    }
+    console.log('adding new note')
+    try {
+      const response = await axios.post('http://127.0.0.1:3000/ask', newQuestionObj, config)
+      console.log('note added successfully')
+      console.log(response.data)
+      setQuestion({
+        title: '',
+        details: ''
+      })
+      navigate('/questions')
+    } catch (error) {
+      console.log('error adding note', error)      
+    }
   }
   return (
     <div>
+      welcome {userJson.displayName}
       <div className="container">
         <div className="row">
           <div className="col">
@@ -37,7 +63,6 @@ function AskQuestion() {
               <ul id='writingAgoodQuestionUl'>
                 <li>Summarize your problem in a one-line title</li>
                 <li>Describe your problem in more detail.</li>
-                <li></li>
               </ul>
             </div>
           </div>
@@ -58,7 +83,7 @@ function AskQuestion() {
                   placeholder='e.g. Is there an R function for finding the index of an element in a vector?'
                   required
                   value={question.title}
-                  onChange={(e)=>setQuestion({...question,title:e.target.value})} /> <br /> <br />
+                  onChange={(e) => setQuestion({ ...question, title: e.target.value })} /> <br /> <br />
                 <b>What are the details of your problem?</b>
                 <p>Introduce the problem and expand on what you put in the title. Minimum 20 characters.</p>
                 <textarea
@@ -66,7 +91,7 @@ function AskQuestion() {
                   id="detailsInput"
                   required
                   value={question.details}
-                  onChange={(e)=>setQuestion({...question,details:e.target.value})}
+                  onChange={(e) => setQuestion({ ...question, details: e.target.value })}
                 ></textarea> <br /> <br />
                 <button className="btn btn-primary" type='submit'>Next</button> <br /> <br />
               </div>

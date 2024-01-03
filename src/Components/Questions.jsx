@@ -1,21 +1,29 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Questions({ user, setUser, token, setToken }) {
+function Questions() {
+    const user = window.localStorage.getItem('user')
+    const userJson = JSON.parse(user)
+    const token = window.localStorage.getItem('token')
+
+    // const setUser = window.localStorage.getItem('user')
+    // const setToken = window.localStorage.getItem('token')
+
     const navigate = useNavigate()
     const askQuestion = () => {
         console.log('button clicked')
         navigate('/ask')
     }
     const logouthandler = () => {
-        setUser(null)
-        setToken(null)
+        // setUser(null)
+        // setToken(null)
         window.localStorage.removeItem('user')
         window.localStorage.removeItem('token')
+        navigate('/login')
     }
     return (
         <div>
-            <b>Welcome {user.displayName}</b>
+            Welcome <b> {userJson.displayName} </b>
             <button onClick={logouthandler}>Logout</button>
             <div className="container text-center">
                 <div className="row align-items-start">

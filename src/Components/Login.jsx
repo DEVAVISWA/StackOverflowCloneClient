@@ -16,7 +16,7 @@ function Login() {
       setToken(token)
     }
   }, [])
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [logIn, setLogin] = useState({
     email: '',
@@ -44,10 +44,10 @@ function Login() {
       })
       setToken(data.token)
       setUser(data)
-      // navigate('/questi
-      ons')
+
       window.localStorage.setItem('token', data.token)
       window.localStorage.setItem('user', JSON.stringify(data))
+      navigate('/questions')
     } else {
       console.log('error logging in user')
       console.log(data)
@@ -77,16 +77,9 @@ function Login() {
         <br />
         <button type='submit'>Login</button>
       </form>
-      {
-        user ? 
-        <Questions
-        user={user} setUser={setUser}
-        token={token} setToken={setToken} />
-        :
-          (<p>
-            Dont have an account? <a href="http://localhost:5173/signup">Sign up</a>
-          </p>)
-      }
+      <p>
+        Dont have an account? <a href="http://localhost:5173/signup">Sign up</a>
+      </p>
     </div>
   )
 }
