@@ -35,15 +35,18 @@ function Questions() {
         //   console.log('Fetching notes..')
         try {
             const response = await axios.get('http://127.0.0.1:3000/ask')
-            console.log('fetching question')
+            // console.log('fetching question')
+            console.log(response.data)
             setAllQuestion(response.data)
-        } catch(e) {
-            console.log('error fetching question' , e)
+
+        } catch (e) {
+            console.log('error fetching question', e)
         }
     }
     useEffect(() => {
         fetchAllQuestion()
     }, [])
+
 
     return (
         <div>
@@ -67,16 +70,25 @@ function Questions() {
                     </div>
                 </div>
                 <div className="container text-center">
-                    <div className="row">
-                        <div className="col">
-                            <ul>
-                                {
-                                    allQuestion.map(question =>
-                                        <li key={question._id}><h3>{question.title}</h3><p>{question.details}</p></li>)
-                                }
-                            </ul>
-                        </div>
-                    </div>
+                    {/* <div className="row "> */}
+                        {/* <div className="col"> */}
+                        {/* <div className='row allQues'> */}
+                            {
+                                allQuestion.map(question =>
+                                    <div className='row allQues' key={question._id}>
+                                        <div className="col-2 vote">
+                                            {question.votes}
+                                        </div>                                        
+                                        <div className="col-10">                                            
+                                            <h3>{question.title}</h3>
+                                            <p>{question.details}</p>
+                                            <i className='alignRight'>asked {question.createdAt.slice(0,10)} at {question.createdAt.slice(12,19)}</i>
+                                        </div>
+                                    </div>)
+                            }
+                        {/* </div> */}
+                        {/* </div> */}
+                    {/* </div> */}
                 </div>
             </div>
 
