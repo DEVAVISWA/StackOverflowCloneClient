@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Questions() {
@@ -21,6 +22,29 @@ function Questions() {
         window.localStorage.removeItem('token')
         navigate('/login')
     }
+
+    //fetching all the question asked by the all user
+    const [allQuestion, setAllQuestion] = useState([])
+
+    const fetchAllQuestion = async () => {
+        // const config = {
+        //     headers: {
+        //       'Authorization': `Bearer ${token}`
+        //     }
+        //   }
+        //   console.log('Fetching notes..')
+        try {
+            const response = await axios.get('http://127.0.0.1:3000/ask')
+            console.log('fetching question')
+            setAllQuestion(response.data)
+        } catch(e) {
+            console.log('error fetching question' , e)
+        }
+    }
+    useEffect(() => {
+        fetchAllQuestion()
+    }, [])
+
     return (
         <div>
             Welcome <b> {userJson.displayName} </b>
@@ -45,7 +69,12 @@ function Questions() {
                 <div className="container text-center">
                     <div className="row">
                         <div className="col">
-                            Column
+                            <ul>
+                                {
+                                    allQuestion.map(question =>
+                                        <li key={question._id}><h3>{question.title}</h3><p>{question.details}</p></li>)
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>

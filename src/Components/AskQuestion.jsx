@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function AskQuestion() {
-  const navigate= useNavigate()
+  const navigate = useNavigate()
   const user = window.localStorage.getItem('user')
   const userJson = JSON.parse(user)
   const token = window.localStorage.getItem('token')
@@ -36,7 +36,7 @@ function AskQuestion() {
       })
       navigate('/questions')
     } catch (error) {
-      console.log('error adding note', error)      
+      console.log('error adding note', error)
     }
   }
   return (
