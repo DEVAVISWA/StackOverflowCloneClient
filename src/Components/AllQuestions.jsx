@@ -1,29 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBar'
 
-function Questions() {
-    const user = window.localStorage.getItem('user')
-    const userJson = JSON.parse(user)
-    const token = window.localStorage.getItem('token')
-
-    // const setUser = window.localStorage.getItem('user')
-    // const setToken = window.localStorage.getItem('token')
-
-    const navigate = useNavigate()
-    const askQuestion = () => {
-        console.log('button clicked')
-        navigate('/ask')
-    }
-    const logouthandler = () => {
-        // setUser(null)
-        // setToken(null)
-        window.localStorage.removeItem('user')
-        window.localStorage.removeItem('token')
-        navigate('/login')
-    }
-
-    //fetching all the question asked by the all user
+function AllQuestions() {
     const [allQuestion, setAllQuestion] = useState([])
 
     const fetchAllQuestion = async () => {
@@ -46,20 +25,16 @@ function Questions() {
     useEffect(() => {
         fetchAllQuestion()
     }, [])
-
-
     return (
         <div>
-            Welcome <b> {userJson.displayName} </b>
-            <button onClick={logouthandler}>Logout</button>
-            {/* AllQuestion */}
+            <NavBar />
             <div className="container text-center">
                 <div className="row align-items-start">
                     <div className="col">
                         <h2>All Questions</h2>
                     </div>
                     <div className="col">
-                        <button type="button" className="btn btn-primary" onClick={askQuestion}>Ask Question</button> <br /> <br />
+                        {/* <button type="button" className="btn btn-primary" onClick={askQuestion}>Ask Question</button> <br /> <br /> */}
                         <nav aria-label="...">
                             <ul className="pagination pagination-sm">
                                 <li className="page-item active" aria-current="page">
@@ -102,9 +77,8 @@ function Questions() {
                     {/* </div> */}
                 </div>
             </div>
-
         </div>
     )
 }
 
-export default Questions
+export default AllQuestions

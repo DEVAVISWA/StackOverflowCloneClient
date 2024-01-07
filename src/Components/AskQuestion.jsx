@@ -10,7 +10,8 @@ function AskQuestion() {
   // console.log(token)
   const [question, setQuestion] = useState({
     title: '',
-    details: ''
+    details: '',
+    tags: ''
   })
   const handleQuestion = async (e) => {
     e.preventDefault()
@@ -23,16 +24,18 @@ function AskQuestion() {
     }
     const newQuestionObj = {
       title: question.title,
-      details: question.details
+      details: question.details,
+      tags: question.tags
     }
     console.log('adding new note')
     try {
       const response = await axios.post('http://127.0.0.1:3000/ask', newQuestionObj, config)
-      console.log('note added successfully')
+      console.log('question added successfully')
       console.log(response.data)
       setQuestion({
         title: '',
-        details: ''
+        details: '',
+        tags: ''
       })
       navigate('/questions')
     } catch (error) {
@@ -93,6 +96,16 @@ function AskQuestion() {
                   value={question.details}
                   onChange={(e) => setQuestion({ ...question, details: e.target.value })}
                 ></textarea> <br /> <br />
+                <b>Tags</b>
+                <p>Add tag to describe what your question is about</p>
+                <input
+                  className="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
+                  type="text"
+                  id="titleInput"
+                  placeholder='e.g. nodejs react'
+                  required
+                  value={question.tags}
+                  onChange={(e) => setQuestion({ ...question, tags: e.target.value })} /> <br /> <br />
                 <button className="btn btn-primary" type='submit'>Next</button> <br /> <br />
               </div>
             </form>

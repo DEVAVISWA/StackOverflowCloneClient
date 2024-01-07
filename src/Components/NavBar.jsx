@@ -1,16 +1,16 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
-import BodyDummyContent from './BodyDummyContent'
-import Footer from './Footer'
+// import BodyDummyContent from './BodyDummyContent'
+// import Footer from './Footer'
 import { Link } from 'react-router-dom'
 
 function NavBar() {
     const padd = {
         padding: 15
     }
-    const pleaseLogin = () => {
-        alert('Please Login or Signup')
-    }
+    // const pleaseLogin = () => {
+    //     alert('Please Login or Signup')
+    // }
 
     return (
         <div>
@@ -19,20 +19,20 @@ function NavBar() {
                 <div className="container-fluid">
 
                     <li className="nav-item dropdown" style={padd}>
-                        <Link className="nav-link " to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={pleaseLogin}>
+                        <Link className="nav-link " to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                             <i className="fa-solid fa-bars"></i>
                         </Link>
                         <ul className="dropdown-menu">
                             <li><Link className="dropdown-item" to={'/'}><i className="fa-solid fa-house"></i> Home</Link></li>
-                            <li><Link className="dropdown-item" to={'questions'}><i className="fa-solid fa-circle-question" ></i> Questions</Link></li>
-                            <li><Link className="dropdown-item" to={'tags'}><i className="fa-solid fa-tags fa-rotate-90"></i> Tag</Link></li>
+                            <li><Link className="dropdown-item" to={'/allQuestions'}><i className="fa-solid fa-circle-question" ></i> Questions</Link></li>
+                            <li><Link className="dropdown-item" to={'/tags'}><i className="fa-solid fa-tags fa-rotate-90"></i> Tag</Link></li>
 
                             {/* <li><hr className="dropdown-divider" /></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li> */}
 
                         </ul>
                     </li>
-                    <Link className="navbar-brand active" to={'/'}> <i className="fa-brands fa-stack-overflow"></i> stack overflow</Link>
+                    <Link className="navbar-brand active" to={'/allQuestions'}> <i className="fa-brands fa-stack-overflow"></i> stack overflow</Link>
 
                     {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -41,14 +41,14 @@ function NavBar() {
                     <div className="collapse navbar-collapse" id="navbarScroll">
                         <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" >
                             <li className="nav-item">
-                                <Link className="nav-link " to={'/about'} onClick={pleaseLogin}>About</Link>
+                                <Link className="nav-link " to={'/'} >About</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={'/#'} onClick={pleaseLogin}>Products</Link>
+                                <Link className="nav-link" to={'/#'} >Products</Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link" to={'/teams'} onClick={pleaseLogin}>For Teams</Link>
+                                <Link className="nav-link" to={'/teams'} >For Teams</Link>
                             </li>
                         </ul>
                     </div>
@@ -63,10 +63,8 @@ function NavBar() {
                     </form>
                 </div>
             </nav>
-            <BodyDummyContent />            
-            <Footer />
         </div>
-        
+
     )
 }
 
