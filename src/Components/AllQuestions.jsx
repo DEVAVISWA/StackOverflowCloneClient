@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 
+//DUMMY
+
 function AllQuestions() {
     const [allQuestion, setAllQuestion] = useState([])
 
@@ -63,7 +65,7 @@ function AllQuestions() {
                                     </div>
                                     <div className="row ">
                                         <div className="col">
-                                            <p>{question.tags}</p>
+                                            <span className='allQuesTag'>{question.tags}</span>
                                         </div>
                                         <div className="col">
                                             <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}</i>

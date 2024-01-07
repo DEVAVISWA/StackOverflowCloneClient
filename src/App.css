@@ -1,5 +1,5 @@
 #topLine {
-    border-top: 5px solid rgb(236, 124, 34);
+    border-top: 5px solid rgb(231, 111, 13);
     margin-top: 0px;
 }
 
@@ -13,11 +13,17 @@ li {
     }
 } */
 #searchBar {
-    width: 100% ;
+    width: 100%;
 }
 
 #padingLoginSignup {
     margin-right: 10px;
+}
+
+/* about */
+.aboutPadd {
+    padding-top: 50px;
+    padding-left: 10px;
 }
 
 #footer {
@@ -46,7 +52,7 @@ h1 {
 }
 
 .top-to-bottom {
-    animation: 1s top-to-bottom forwards;
+    animation: 2s top-to-bottom forwards;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -.005em;
@@ -73,7 +79,7 @@ h1 {
 }
 
 .bottom-to-up {
-    animation: 2s bottom-to-up forwards;
+    animation: 3s bottom-to-up forwards;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -.005em;
@@ -100,7 +106,7 @@ h1 {
 }
 
 .top-to-bottom {
-    animation: 3s top-to-bottom forwards;
+    animation: 4s top-to-bottom forwards;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -.005em;
@@ -126,7 +132,7 @@ h1 {
 }
 
 .bottom-to-up {
-    animation: 4s bottom-to-up forwards;
+    animation: 5s bottom-to-up forwards;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -.005em;
@@ -178,17 +184,23 @@ h1 {
     width: 100%;
 }
 
-#detailsInput{
+#detailsInput {
     width: 100%;
     height: 200px;
 }
 
-.allQues{
+.allQues {
     text-align: left;
-    border: 1px solid rgb(214,217,220);
+    border: 1px solid rgb(214, 217, 220);
     /* border-right: 1px solid rgb(214,217,220);
     border-bottom: 1px solid rgb(214,217,220); */
     padding: 15px;
+}
+
+.allQuesTag {
+    background-color: rgb(214, 232, 250);
+    padding: 4px;
+    border-radius: 4px;
 }
 
 .vote {
@@ -196,6 +208,22 @@ h1 {
     text-align: right;
 }
 
-.alignRight{
+.alignRight {
     font-size: small;
+}
+
+
+/* loginform */
+.loginForm {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 100px;
+}
+
+/* signupform */
+.signupForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
 }

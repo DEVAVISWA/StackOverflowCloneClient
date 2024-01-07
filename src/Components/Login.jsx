@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Questions from './Questions'
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
+import NavBar from './NavBar'
 
 
 function Login() {
@@ -55,29 +56,33 @@ function Login() {
     }
   }
   return (
-    <div className="container text-center">
-      <h3>Login Page</h3>
-      <form onSubmit={loginHandler}>
-        <div>
-          <label>Email</label> <br />
-          <input
-            type="email"
-            required
-            value={logIn.email}
-            onChange={(e) => setLogin({ ...logIn, email: e.target.value })} />
-        </div>
-        <div>
-          <label>Password</label> <br />
-          <input
-            type="password"
-            required
-            value={logIn.password}
-            onChange={(e) => setLogin({ ...logIn, password: e.target.value })} />
-        </div>
-        <br />
-        <button type='submit'>Login</button>
-      </form>
-      <p>
+    <div>           
+      <NavBar /> 
+      <div className="container text-center loginForm shadow p-3 mb-5 bg-body-tertiary rounded ">
+        <h3>Login Page</h3>
+        <form onSubmit={loginHandler}>
+          <div>
+            <b>Email</b> <br />
+            <input
+              type="email"
+              required
+              value={logIn.email}
+              onChange={(e) => setLogin({ ...logIn, email: e.target.value })} />
+          </div>
+          <br />
+          <div>
+            <b>Password</b> <br />
+            <input
+              type="password"
+              required
+              value={logIn.password}
+              onChange={(e) => setLogin({ ...logIn, password: e.target.value })} />
+          </div>
+          <br />
+          <button type='submit' className="btn btn-primary">Login</button>
+        </form>
+      </div>
+      <p className='text-center'>
         Dont have an account? <a href="http://localhost:5173/signup">Sign up</a>
       </p>
     </div>
