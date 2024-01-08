@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
+import { json } from 'react-router-dom'
 
 //DUMMY
 
@@ -17,7 +18,7 @@ function AllQuestions() {
         try {
             const response = await axios.get('http://127.0.0.1:3000/ask')
             // console.log('fetching question')
-            console.log(response.data)
+            console.log("need",response.data)
             setAllQuestion(response.data)
 
         } catch (e) {
@@ -68,8 +69,15 @@ function AllQuestions() {
                                             <span className='allQuesTag'>{question.tags}</span>
                                         </div>
                                         <div className="col">
-                                            <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}</i>
+                                            <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}  by {question.user ? question.user.displayName : "noname"}</i>
+                                            <span></span>
+                                            {console.log(question.user.displayName)}
                                         </div>
+                                        
+                                        {/* {console.log(question.user.displayName || 'hello')}; */}
+                                        
+                                            
+                                                                               
                                     </div>
                                 </div>
                             </div>)

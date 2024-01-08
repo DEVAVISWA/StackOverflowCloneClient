@@ -32,7 +32,7 @@ function NavBar() {
 
                         </ul>
                     </li>
-                    <Link className="navbar-brand active" to={'/allQuestions'}> <i className="fa-brands fa-stack-overflow"></i> stack overflow</Link>
+                    <Link className="navbar-brand active" to={'/allQuestions'}> <img src="./assets/icon.png"/> <i className="fa-brands fa-stack-overflow"></i> stack overflow</Link>
 
                     {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

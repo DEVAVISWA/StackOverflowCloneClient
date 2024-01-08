@@ -91,7 +91,7 @@ function Questions() {
                                             <p>{question.tags}</p>
                                         </div>
                                         <div className="col">
-                                            <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}</i>
+                                            <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}  by {question.user ? question.user.displayName : "noname"}</i>
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,9 @@
 #topLine {
     border-top: 5px solid rgb(231, 111, 13);
     margin-top: 0px;
+    /* margin: 20px 0;
+    border: 5px solid orange !important; */
+    opacity: inherit;
 }
 
 li {
