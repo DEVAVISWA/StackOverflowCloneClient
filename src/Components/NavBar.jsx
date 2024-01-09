@@ -44,11 +44,11 @@ function NavBar() {
                                 <Link className="nav-link " to={'/'} >About</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={'/#'} >Products</Link>
+                                <Link className="nav-link" to={'/'} >Products</Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link" to={'/teams'} >For Teams</Link>
+                                <Link className="nav-link" to={'/'} >For Teams</Link>
                             </li>
                         </ul>
                     </div>

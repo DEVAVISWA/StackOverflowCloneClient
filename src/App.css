@@ -215,6 +215,14 @@ h1 {
     font-size: small;
 }
 
+.overFlow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis ('...');
+    opacity: 0.85;
+    /* text-overflow: inherit; */
+    /* width: content; */
+}
 
 /* loginform */
 .loginForm {

@@ -60,14 +60,14 @@ function Questions() {
                     </div>
                     <div className="col">
                         <button type="button" className="btn btn-primary" onClick={askQuestion}>Ask Question</button> <br /> <br />
-                        <nav aria-label="...">
+                        {/* <nav aria-label="...">
                             <ul className="pagination pagination-sm">
                                 <li className="page-item active" aria-current="page">
                                     <span className="page-link">All Questions</span>
                                 </li>
                                 <li className="page-item"><a className="page-link" href="#">Top Questions</a></li>
                             </ul>
-                        </nav>
+                        </nav> */}
                     </div>
                 </div>
                 <div className="container text-center">
@@ -83,12 +83,12 @@ function Questions() {
                                 </div>
                                 <div className="col-10">
                                     <h3>{question.title}</h3>
-                                    <div className="row ">
+                                    <div className="row overFlow">
                                         <p>{question.details}</p>
                                     </div>
                                     <div className="row ">
                                         <div className="col">
-                                            <p>{question.tags}</p>
+                                            <span className='allQuesTag'>{question.tags}</span>
                                         </div>
                                         <div className="col">
                                             <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}  by {question.user ? question.user.displayName : "noname"}</i>
