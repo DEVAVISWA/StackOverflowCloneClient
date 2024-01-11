@@ -105,13 +105,16 @@ function Questions({ questionId, setQuestionId }) {
 
                                 <div className="row ">
                                     <div className="col">
+                                        <span className='allQuesTag'>{question.tags}</span>
+                                    </div>
+                                    {/* <div className="col">
                                         {Array.isArray(question.tags) &&
                                             question.tags.map((tag, index) => (
                                                 <span className="allQuesTag" key={index}>
                                                     {tag}
                                                 </span>
                                             ))}
-                                    </div>
+                                    </div> */}
                                     <div className="col">
                                         <i className="alignRight">
                                             {question.user

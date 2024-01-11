@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {  useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import { Link, json, useNavigate } from 'react-router-dom'
 
@@ -35,8 +35,8 @@ function AllQuestions() {
     const askQuestionInStackOverflowMainPage = () => {
         alert('login to ask Question')
         navigate('/login')
-    }    
-    
+    }
+
     return (
         <div>
             <NavBar />
@@ -63,9 +63,6 @@ function AllQuestions() {
                     </div>
                 </div>
                 <div className="container text-center">
-                    {/* <div className="row "> */}
-                    {/* <div className="col"> */}
-                    {/* <div className='row allQues'> */}
                     {
                         allQuestion.map(question =>
                             <div className='row allQues' key={question._id}>
@@ -74,19 +71,20 @@ function AllQuestions() {
                                     <p>{question.answer.length} answers</p>
                                 </div>
                                 <div className="col-10">
-                                    
-                                        <h4><p onClick={() => navigate(`/questions/answer/${question._id}`)}>
-                                            {/* <Link to={{
-                                                pathname: `/answer/${question._id}`,
-                                                state:{allQuestion:allQuestion}                                               
-                                            }} > */}
+                                    {/* sir method */}
+                                    <h4>
+                                        <Link to={`/questions/answer/${question._id}`}>{question.title}</Link>
+                                    </h4>
+
+                                    {/* mymethod */}
+                                    {/* <h4><p onClick={() => navigate(`/questions/answer/${question._id}`)}>
                                                 {question.title}
-                                            {/* </Link> */}
-                                            </p></h4>
-                                    
+                                            </p></h4> */}
+
                                     <div className="row overFlow">
                                         <p>{question.details}</p>
                                     </div>
+
                                     <div className="row ">
                                         <div className="col">
                                             <span className='allQuesTag'>{question.tags}</span>
@@ -109,4 +107,4 @@ function AllQuestions() {
     )
 }
 
-export   default  AllQuestions
+export default AllQuestions
