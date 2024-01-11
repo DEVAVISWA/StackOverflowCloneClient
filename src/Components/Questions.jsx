@@ -1,8 +1,10 @@
-import axios from 'axios'
+import axios, { all } from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-function Questions() {
+//REAL Question
+
+function Questions({questionId,setQuestionId}) {
     const user = window.localStorage.getItem('user')
     const userJson = JSON.parse(user)
     const token = window.localStorage.getItem('token')
@@ -38,15 +40,19 @@ function Questions() {
             // console.log('fetching question')
             console.log(response.data)
             setAllQuestion(response.data)
-
         } catch (e) {
             console.log('error fetching question', e)
         }
     }
+    
     useEffect(() => {
         fetchAllQuestion()
     }, [])
 
+    function answerHandler(question) {
+        setQuestionId(question._id)
+        navigate(`answer/${question._id}`)
+    }
 
     return (
         <div>
@@ -79,10 +85,12 @@ function Questions() {
                             <div className='row allQues' key={question._id}>
                                 <div className="col-2 vote">
                                     <p>{question.votes} votes</p>
-                                    <p>0 answers</p>
+                                    <p>{question.answer.length} answers</p>
+                                    {/* <p>{question.answer[1].answerBody}</p> */}
                                 </div>
-                                <div className="col-10">
-                                    <h3>{question.title}</h3>
+
+                                {/* <div className="col-10">
+                                    <h4>{question.title}</h4>
                                     <div className="row overFlow">
                                         <p>{question.details}</p>
                                     </div>
@@ -91,10 +99,37 @@ function Questions() {
                                             <span className='allQuesTag'>{question.tags}</span>
                                         </div>
                                         <div className="col">
-                                            <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}  by {question.user ? question.user.displayName : "noname"}</i>
+                                            <i className='alignRight'>{question.user ? question.user.displayName : "noname"} asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}</i>
                                         </div>
                                     </div>
+                                </div> */}
+
+                                <div className="col-10">
+                                        
+                                    <h4><p onClick={answerHandler(question)}>
+                                        {/* <Link to={{
+                                            pathname: `/answer/${question._id}`,
+                                            state: { allQuestion: allQuestion }
+                                        }} > */}
+                                            {question.title}
+                                        {/* </Link> */}
+                                        </p></h4>
+
+                                    <div className="row overFlow">
+                                        <p>{question.details}</p>
+                                    </div>
+                                    <div className="row ">
+                                        <div className="col">
+                                            <span className='allQuesTag'>{question.tags}</span>
+                                        </div>
+                                        <div className="col">
+                                            <i className='alignRight'> {question.user ? question.user.displayName : "noname"} asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}   </i>
+                                            {/* {console.log(question.user.displayName)} */}
+                                        </div>
+                                        {/* {console.log(question.user.displayName || 'hello')}; */}
+                                    </div>
                                 </div>
+
                             </div>)
                     }
                     {/* </div> */}

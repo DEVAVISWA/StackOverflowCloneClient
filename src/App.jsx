@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 // import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // import NavBar from './Components/NavBar'
@@ -10,11 +10,13 @@ import AskQuestion from './Components/AskQuestion'
 import About from './Components/About'
 import AllQuestions from './Components/AllQuestions'
 import Tags from './Components/Tags'
+import AnswerAllQuestion from './Components/AnswerAllQuestion'
 
 
 
 
 function App() {
+  const [questionId,setQuestionId] = useState(null)
   return (
     <div>
       <hr id='topLine' />
@@ -25,9 +27,11 @@ function App() {
           <Route path='/allQuestions' Component={AllQuestions} />
           <Route path='/login/*' Component={Login} />
           <Route path='/signup' Component={Signup} />
-          <Route path='/questions' Component={Questions} />
+          <Route path='/questions' element={<Questions questionId={questionId} setQuestionId={setQuestionId}/> } />
           <Route path='/ask' Component={AskQuestion} />
           <Route path='/tags' Component={Tags} />
+          <Route path='/questions/answer/:id' element={<AnswerAllQuestion questionId={questionId} setQuestionId={setQuestionId}/>} />
+          {/* <Route path='*' element={<h1>Default</h1>} /> */}
         </Routes>
       </Router>
     </div>
@@ -35,3 +39,5 @@ function App() {
 }
 
 export default App
+
+// questionId={questionId} setQuestionId={setQuestionId}

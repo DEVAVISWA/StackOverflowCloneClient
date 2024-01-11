@@ -1,11 +1,13 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import NavBar from './NavBar'
-import { json, useNavigate } from 'react-router-dom'
+import { Link, json, useNavigate } from 'react-router-dom'
 
 //DUMMY
 
+
 function AllQuestions() {
+
     const [allQuestion, setAllQuestion] = useState([])
 
     const fetchAllQuestion = async () => {
@@ -20,7 +22,7 @@ function AllQuestions() {
             // console.log('fetching question')
             console.log("need", response.data)
             setAllQuestion(response.data)
-
+            // window.localStorage.setItem('allQuestionState',JSON.stringify(response.data))
         } catch (e) {
             console.log('error fetching question', e)
         }
@@ -33,8 +35,8 @@ function AllQuestions() {
     const askQuestionInStackOverflowMainPage = () => {
         alert('login to ask Question')
         navigate('/login')
-    }
-
+    }    
+    
     return (
         <div>
             <NavBar />
@@ -49,7 +51,7 @@ function AllQuestions() {
                         <button type="button"
                             className="btn btn-primary"
                             onClick={askQuestionInStackOverflowMainPage}
-                            >Ask Question</button> <br /> <br />
+                        >Ask Question</button> <br /> <br />
                         {/* <nav aria-label="...">
                             <ul className="pagination pagination-sm">
                                 <li className="page-item active" aria-current="page">
@@ -69,10 +71,19 @@ function AllQuestions() {
                             <div className='row allQues' key={question._id}>
                                 <div className="col-2 vote">
                                     <p>{question.votes} votes</p>
-                                    <p>0 answers</p>
+                                    <p>{question.answer.length} answers</p>
                                 </div>
                                 <div className="col-10">
-                                    <h3>{question.title}</h3>
+                                    
+                                        <h4><p onClick={() => navigate(`/questions/answer/${question._id}`)}>
+                                            {/* <Link to={{
+                                                pathname: `/answer/${question._id}`,
+                                                state:{allQuestion:allQuestion}                                               
+                                            }} > */}
+                                                {question.title}
+                                            {/* </Link> */}
+                                            </p></h4>
+                                    
                                     <div className="row overFlow">
                                         <p>{question.details}</p>
                                     </div>
@@ -81,7 +92,7 @@ function AllQuestions() {
                                             <span className='allQuesTag'>{question.tags}</span>
                                         </div>
                                         <div className="col">
-                                            <i className='alignRight'>asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}  by {question.user ? question.user.displayName : "noname"}</i>
+                                            <i className='alignRight'> {question.user ? question.user.displayName : "noname"} asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}   </i>
                                             {/* {console.log(question.user.displayName)} */}
                                         </div>
                                         {/* {console.log(question.user.displayName || 'hello')}; */}
@@ -98,4 +109,4 @@ function AllQuestions() {
     )
 }
 
-export default AllQuestions
+export   default  AllQuestions

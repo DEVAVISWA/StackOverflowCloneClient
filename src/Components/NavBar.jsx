@@ -3,6 +3,7 @@ import React from 'react'
 // import BodyDummyContent from './BodyDummyContent'
 // import Footer from './Footer'
 import { Link } from 'react-router-dom'
+// import icon from '../assets/icon.png'
 
 function NavBar() {
     const padd = {
