@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 //REAL Question
 
-function Questions({questionId,setQuestionId}) {
+function Questions({ questionId, setQuestionId }) {
     const user = window.localStorage.getItem('user')
     const userJson = JSON.parse(user)
     const token = window.localStorage.getItem('token')
@@ -44,100 +44,87 @@ function Questions({questionId,setQuestionId}) {
             console.log('error fetching question', e)
         }
     }
-    
+
     useEffect(() => {
         fetchAllQuestion()
     }, [])
 
-    function answerHandler(question) {
-        setQuestionId(question._id)
-        navigate(`answer/${question._id}`)
-    }
+    // mymethod
+    // function answerHandler(question) {
+    //     setQuestionId(question._id)
+    //     navigate(`answer/${question._id}`)
+    // }
+
+    //sirmethod
+    // const answerHandler = (question) => {
+    //     setQuestionId(question._id)
+    //     navigate(`/questions/answer/${question._id}`)
+    // }
 
     return (
+
+        //sirmethod , mymethod in Questionsjsx.txt file
         <div>
-            Welcome <b> {userJson.displayName} </b>
+            Welcome <b>{userJson.displayName}</b>
             <button onClick={logouthandler}>Logout</button>
-            {/* AllQuestion */}
+
+
             <div className="container text-center">
                 <div className="row align-items-start">
                     <div className="col">
                         <h2>All Questions</h2>
                     </div>
                     <div className="col">
-                        <button type="button" className="btn btn-primary" onClick={askQuestion}>Ask Question</button> <br /> <br />
-                        {/* <nav aria-label="...">
-                            <ul className="pagination pagination-sm">
-                                <li className="page-item active" aria-current="page">
-                                    <span className="page-link">All Questions</span>
-                                </li>
-                                <li className="page-item"><a className="page-link" href="#">Top Questions</a></li>
-                            </ul>
-                        </nav> */}
+                        <button type="button" className="btn btn-primary" onClick={askQuestion}>
+                            Ask Question
+                        </button>{' '}
+                        <br /> <br />
                     </div>
                 </div>
+
+
                 <div className="container text-center">
-                    {/* <div className="row "> */}
-                    {/* <div className="col"> */}
-                    {/* <div className='row allQues'> */}
-                    {
-                        allQuestion.map(question =>
-                            <div className='row allQues' key={question._id}>
-                                <div className="col-2 vote">
-                                    <p>{question.votes} votes</p>
-                                    <p>{question.answer.length} answers</p>
-                                    {/* <p>{question.answer[1].answerBody}</p> */}
+                    {allQuestion.map((question) => (
+                        <div className="row allQues" key={question._id}>
+                            <div className="col-2 vote">
+                                <p>{question.votes} votes</p>
+                                <p>{question.answer.length} answers</p>
+                            </div>
+
+
+                            <div className="col-10">
+                                <h4>
+                                    <Link to={`/questions/answer/${question._id}`}>{question.title}</Link>
+                                </h4>
+
+
+                                <div className="row overFlow">
+                                    <p>{question.details}</p>
                                 </div>
 
-                                {/* <div className="col-10">
-                                    <h4>{question.title}</h4>
-                                    <div className="row overFlow">
-                                        <p>{question.details}</p>
-                                    </div>
-                                    <div className="row ">
-                                        <div className="col">
-                                            <span className='allQuesTag'>{question.tags}</span>
-                                        </div>
-                                        <div className="col">
-                                            <i className='alignRight'>{question.user ? question.user.displayName : "noname"} asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}</i>
-                                        </div>
-                                    </div>
-                                </div> */}
 
-                                <div className="col-10">
-                                        
-                                    <h4><p onClick={answerHandler(question)}>
-                                        {/* <Link to={{
-                                            pathname: `/answer/${question._id}`,
-                                            state: { allQuestion: allQuestion }
-                                        }} > */}
-                                            {question.title}
-                                        {/* </Link> */}
-                                        </p></h4>
-
-                                    <div className="row overFlow">
-                                        <p>{question.details}</p>
+                                <div className="row ">
+                                    <div className="col">
+                                        {Array.isArray(question.tags) &&
+                                            question.tags.map((tag, index) => (
+                                                <span className="allQuesTag" key={index}>
+                                                    {tag}
+                                                </span>
+                                            ))}
                                     </div>
-                                    <div className="row ">
-                                        <div className="col">
-                                            <span className='allQuesTag'>{question.tags}</span>
-                                        </div>
-                                        <div className="col">
-                                            <i className='alignRight'> {question.user ? question.user.displayName : "noname"} asked {question.createdAt.slice(0, 10)} at {question.createdAt.slice(12, 19)}   </i>
-                                            {/* {console.log(question.user.displayName)} */}
-                                        </div>
-                                        {/* {console.log(question.user.displayName || 'hello')}; */}
+                                    <div className="col">
+                                        <i className="alignRight">
+                                            {question.user
+                                                ? `${question.user.displayName} asked ${question.createdAt.slice(0, 10)} at ${question.createdAt.slice(11, 19)}`
+                                                : 'noname'}
+                                        </i>
                                     </div>
                                 </div>
-
-                            </div>)
-                    }
-                    {/* </div> */}
-                    {/* </div> */}
-                    {/* </div> */}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
-
         </div>
     )
 }

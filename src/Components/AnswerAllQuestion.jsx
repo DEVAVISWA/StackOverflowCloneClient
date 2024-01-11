@@ -23,17 +23,30 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
   //   }    
   // }    
   // fetchAnswer() 
+  // useEffect(() => {
+  //   axios.get(`http://127.0.0.1:3000/answer/${id}`)
+  //     .then((response) => {
+  //       console.log(response.data)
+  //       setAnswer(response.data)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  // }, [])
 
+  const fetchAnswer = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:3000/answer/${id}`);
+      console.log("particular answer", response.data);
+      setAnswer(response.data); // Update the state with the fetched data
+    } catch (e) {
+      console.log('error fetching answer', e);
+    }
+  };
   useEffect(() => {
-    axios.get(`http://127.0.0.1:3000/answer/${id}`)
-      .then((response) => {
-        console.log(response.data)
-        setAnswer(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
+    fetchAnswer(); // Call the fetchAnswer function directly in useEffect
+  }, [id]);
+
 
   return (
     <div>
@@ -48,10 +61,10 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
       <div className='container text-left'> Answers:- {
         <ol>
           {
-            answer.answer?.map(ans => <li key={ans._id}> {ans.answerBody} , answered by {ans.user? ans.user.displayName : 'no name'} </li>)
+            answer.answer?.map(ans => (<li key={ans._id}> {ans.answerBody} , answered by {ans.user ? ans.user.displayName : 'no name'} </li>))
           }
-        </ol>              
-      }  
+        </ol>
+      }
       </div>
       <form >
         <div className='container text-left'>
