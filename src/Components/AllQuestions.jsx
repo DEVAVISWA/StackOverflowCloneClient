@@ -68,12 +68,18 @@ function AllQuestions() {
                             <div className='row allQues' key={question._id}>
                                 <div className="col-2 vote">
                                     <p>{question.votes} votes</p>
-                                    <p>{question.answer.length} answers</p>
+                                    {
+                                        question.answer.length > 0 ? <span className='p-2 border border-success-subtle rounded-2'>{question.answer.length} answers</span>
+                                            :
+                                            <span>{question.answer.length} answers</span>
+                                    }
                                 </div>
                                 <div className="col-10">
                                     {/* sir method */}
                                     <h4>
-                                        <Link to={`/questions/answer/${question._id}`}>{question.title}</Link>
+                                        <Link
+                                            to={`/questions/answer/${question._id}`}
+                                            style={{ textDecoration: 'none' }}>{question.title}</Link>
                                     </h4>
 
                                     {/* mymethod */}

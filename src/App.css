@@ -217,7 +217,7 @@ h1 {
 
 .overFlow {
     overflow: hidden;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     text-overflow: ellipsis ('...');
     opacity: 0.85;
     /* text-overflow: inherit; */
@@ -237,4 +237,22 @@ h1 {
     align-items: center;
     justify-content: center;
     margin-top: 100px;
+}
+
+/* answerAllQuestion.jsx */
+.answerPara {
+    background-color: rgb(246, 246, 246);
+}
+
+.lightText {
+    font-weight: 300;
+}
+
+.descriptionText {
+    font-size: larger;
+}
+
+.askQuestionButton {
+    white-space: nowrap;
+    text-align: center;
 }

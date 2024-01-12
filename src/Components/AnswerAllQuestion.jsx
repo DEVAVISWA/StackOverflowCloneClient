@@ -68,17 +68,17 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
       <NavBar />
       <div className="container text-left">
         <div className="row ">
-          <div className='col-11'><h4>{answer ? answer.title : ""}</h4>{answer? answer.createdAt : ''} <hr /></div>
-          <div className='col-1'> <button className='btn btn-primary' onClick={askQuestion}>Ask Question</button></div>
+          <div className='col-11'><h4>{answer ? answer.title : ""}</h4> aksed {answer? answer.createdAt.slice(0, 10) : ''}</div>
+          <div className='col-1'> <button className='btn btn-primary askQuestionButton' onClick={askQuestion}>Ask Question</button></div> <hr />
         </div>
       </div>
-      <div className='container text-left'>{answer ? answer.details :''} <hr /></div>
-      <div className='container text-left'> {answer.answer ? answer.answer.length : "0"} Answers:- {
-        <ol>
+      <div className='container text-left descriptionText'>{answer ? answer.details :''} <hr /></div>
+      <div className='container text-left'> {answer.answer ? answer.answer.length : "0"} 𝐀𝐧𝐬𝐰𝐞𝐫𝐬:-  <br /> <br />{
+        <div>
           {
-            answer.answer?.map(ans => (<div key={ans._id}> {ans.answerBody} , <br /> answered {ans.answeredOn} by {ans.user ? ans.user.displayName : 'no name'} <hr /></div>))
+            answer.answer?.map(ans => (<div key={ans._id}> <p className='answerPara'>{ans.answerBody}</p> <i className='lightText'> answered {ans.answeredOn.slice(0, 10)} at {ans.answeredOn.slice(11, 19)}</i> by {ans.user ? ans.user.displayName : 'no name'} <hr /></div>))
           }
-        </ol>
+        </div>
       }
       </div>
       <form onSubmit={patchUserAnswer}>
