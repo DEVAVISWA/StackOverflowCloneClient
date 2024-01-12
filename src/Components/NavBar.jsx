@@ -3,7 +3,7 @@ import React from 'react'
 // import BodyDummyContent from './BodyDummyContent'
 // import Footer from './Footer'
 import { Link } from 'react-router-dom'
-// import icon from '../assets/icon.png'
+import icon from '../assets/icon.png'
 
 function NavBar() {
     const padd = {
@@ -33,7 +33,7 @@ function NavBar() {
 
                         </ul>
                     </li>
-                    <Link className="navbar-brand active" to={'/allQuestions'}> <img src="./assets/icon.png"/> <i className="fa-brands fa-stack-overflow"></i> stack overflow</Link>
+                    <Link className="navbar-brand active" to={'/allQuestions'}> <img src={icon}/> stack<b>overflow</b></Link>
 
                     {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
