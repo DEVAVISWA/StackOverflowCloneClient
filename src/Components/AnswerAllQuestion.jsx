@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 // import { useLocation } from 'react-router-dom'
 
@@ -34,6 +34,20 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
   //     })
   // }, [])
 
+  const user = window.localStorage.getItem('user')
+  const userJson = JSON.parse(user)
+
+  const navigate = useNavigate()
+  const askQuestion = () => {
+    console.log('button clicked')
+    if(userJson) {
+      navigate('/ask')
+    } else {
+      alert('Login to ask Questions')
+      navigate('/login')
+    }
+  }
+
   const fetchAnswer = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:3000/answer/${id}`);
@@ -54,7 +68,7 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
       <div className="container text-left">
         <div className="row ">
           <div className='col-11'><h4>{answer.title}</h4>{answer.createdAt}</div>
-          <div className='col-1'> <button className='btn btn-primary'>Ask Question</button></div>
+          <div className='col-1'> <button className='btn btn-primary' onClick={askQuestion}>Ask Question</button></div>
         </div>
       </div>
       <div className='container text-left'>{answer.details}</div>
