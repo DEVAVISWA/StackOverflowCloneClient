@@ -49,7 +49,12 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
     if (userJson) {
       console.log('submitting answer')
       try {
-        axios.patch(`http://127.0.0.1:3000/answer/${id}`, answer.userAnswer)
+        let payload = {
+          "answerBody": answer.userAnswer,
+          "userId": JSON.parse(localStorage.getItem('user')).displayName,
+          "questionId": id
+        }
+        await axios.patch(`http://127.0.0.1:3000/answer/${id}`, payload)
           .then(response => {
             console.log('answer posted successfully', response.data)
             setAnswer(response.data)
@@ -62,21 +67,21 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
       navigate('/login')
     }
   }
-
+  console.log(answer)
   return (
     <div>
       <NavBar />
       <div className="container text-left">
         <div className="row ">
-          <div className='col-11'><h4>{answer ? answer.title : ""}</h4> aksed {answer? answer.createdAt.slice(0, 10) : ''}</div>
+          <div className='col-11'><h4>{answer ? answer.title : ""}</h4> aksed {answer ? answer.createdAt.slice(0, 10) : ''}</div>
           <div className='col-1'> <button className='btn btn-primary askQuestionButton' onClick={askQuestion}>Ask Question</button></div> <hr />
         </div>
       </div>
-      <div className='container text-left descriptionText'>{answer ? answer.details :''} <hr /></div>
+      <div className='container text-left descriptionText'>{answer ? answer.details : ''} <hr /></div>
       <div className='container text-left'> {answer.answer ? answer.answer.length : "0"} 𝐀𝐧𝐬𝐰𝐞𝐫𝐬:-  <br /> <br />{
         <div>
           {
-            answer.answer?.map(ans => (<div key={ans._id}> <p className='answerPara'>{ans.answerBody}</p> <i className='lightText'> answered {ans.answeredOn.slice(0, 10)} at {ans.answeredOn.slice(11, 19)}</i> by {ans.user ? ans.user.displayName : 'no name'} <hr /></div>))
+            answer.answer?.map(ans => (<div key={ans._id}> <p className='answerPara'>{ans.answerBody}</p> <i className='lightText'> answered {ans.answeredOn.slice(0, 10)} at {ans.answeredOn.slice(11, 19)}</i> by {ans ? ans.userId : 'no name'} <hr /></div>))
           }
         </div>
       }
