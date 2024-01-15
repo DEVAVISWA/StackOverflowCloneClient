@@ -55,9 +55,8 @@ function Questions() {
                     {allQuestion.map((question) => (
                         <div className="row allQues" key={question._id}>
                             <div className="col-2 vote">
-                                <p>{question.votes} votes</p>
                                 {
-                                    question.answer.length > 0 ? <span className='p-2 border border-success-subtle rounded-2'>{question.answer.length} answers</span>
+                                    question.answer.length > 0 ? <span>{question.answer.length} answers</span>
                                         :
                                         <span>{question.answer.length} answers</span>
                                 }

@@ -20,7 +20,6 @@ function NavBar() {
                         <ul className="dropdown-menu">
                             <li><Link className="dropdown-item" to={'/'}><i className="fa-solid fa-house"></i> Home</Link></li>
                             <li><Link className="dropdown-item" to={'/allQuestions'}><i className="fa-solid fa-circle-question" ></i> Questions</Link></li>
-                            <li><Link className="dropdown-item" to={'/tags'}><i className="fa-solid fa-tags fa-rotate-90"></i> Tag</Link></li>
                         </ul>
                     </li>
                     <Link className="navbar-brand active" to={'/allQuestions'}> <img src={icon} /> stack<b>overflow</b></Link>

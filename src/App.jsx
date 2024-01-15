@@ -7,7 +7,6 @@ import Questions from './Components/Questions'
 import AskQuestion from './Components/AskQuestion'
 import About from './Components/About'
 import AllQuestions from './Components/AllQuestions'
-import Tags from './Components/Tags'
 import AnswerAllQuestion from './Components/AnswerAllQuestion'
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/questions' element={<Questions />} />
           <Route path='/ask' element={<AskQuestion />} />
-          <Route path='/tags' element={<Tags />} />
           <Route path='/questions/answer/:id' element={<AnswerAllQuestion />} />
           <Route path='*' element={<h1>Default</h1>} />
         </Routes>
