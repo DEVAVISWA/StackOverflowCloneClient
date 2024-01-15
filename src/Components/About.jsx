@@ -1,12 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import NavBar from './NavBar'
 import Footer from './Footer'
 
 function About() {
-    // useEffect(() => {
-    //     alert('Please Login To Ask Questions')
-    // }, [])
-
     return (
         <div>
             <NavBar />

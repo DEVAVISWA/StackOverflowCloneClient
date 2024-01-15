@@ -2,14 +2,10 @@ import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-// import { useLocation } from 'react-router-dom'
 
-
-
-function AnswerAllQuestion({ questionId, setQuestionId }) {
+function AnswerAllQuestion() {
   const { id } = useParams()
-  // console.log(id)
-
+  
   const [answer, setAnswer] = useState({
     title: '',
     createdAt: '',
@@ -34,14 +30,14 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
   const fetchAnswer = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:3000/answer/${id}`);
-      console.log("particular answer", response.data);
-      setAnswer(response.data); // Update the state with the fetched data
+      console.log("particular answer", response.data)
+      setAnswer(response.data)
     } catch (e) {
-      console.log('error fetching answer', e);
+      console.log('error fetching answer', e)
     }
   };
   useEffect(() => {
-    fetchAnswer(); // Call the fetchAnswer function directly in useEffect
+    fetchAnswer()
   }, [id]);
 
   const patchUserAnswer = async (e) => {
@@ -60,7 +56,7 @@ function AnswerAllQuestion({ questionId, setQuestionId }) {
             setAnswer(response.data)
           })
       } catch (error) {
-        console.log('error posting asnwer', error)
+        console.log('error posting answer', error)
       }
     } else {
       alert('Login to post your answers')

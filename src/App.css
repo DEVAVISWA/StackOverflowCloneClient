@@ -1,8 +1,6 @@
 #topLine {
     border-top: 5px solid rgb(231, 111, 13);
     margin-top: 0px;
-    /* margin: 20px 0;
-    border: 5px solid orange !important; */
     opacity: inherit;
 }
 
@@ -10,11 +8,6 @@ li {
     list-style-type: none;
 }
 
-/* @media (min-width: 990px) and (max-width:2000px) {
-    #searchBar {
-        width: 800px;
-    }
-} */
 #searchBar {
     width: 100%;
 }
@@ -195,8 +188,6 @@ h1 {
 .allQues {
     text-align: left;
     border: 1px solid rgb(214, 217, 220);
-    /* border-right: 1px solid rgb(214,217,220);
-    border-bottom: 1px solid rgb(214,217,220); */
     padding: 15px;
 }
 
@@ -217,11 +208,8 @@ h1 {
 
 .overFlow {
     overflow: hidden;
-    /* white-space: nowrap; */
     text-overflow: ellipsis ('...');
     opacity: 0.85;
-    /* text-overflow: inherit; */
-    /* width: content; */
 }
 
 /* loginform */

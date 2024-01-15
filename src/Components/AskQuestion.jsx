@@ -7,7 +7,6 @@ function AskQuestion() {
   const user = window.localStorage.getItem('user')
   const userJson = JSON.parse(user)
   const token = window.localStorage.getItem('token')
-  // console.log(token)
   const [question, setQuestion] = useState({
     title: '',
     details: '',

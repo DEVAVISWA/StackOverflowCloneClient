@@ -6,18 +6,10 @@ function Tags() {
     const [allQuestion, setAllQuestion] = useState([])
 
     const fetchAllQuestion = async () => {
-        // const config = {
-        //     headers: {
-        //       'Authorization': `Bearer ${token}`
-        //     }
-        //   }
-        //   console.log('Fetching notes..')
         try {
             const response = await axios.get('http://127.0.0.1:3000/ask')
-            // console.log('fetching question')
             console.log(response.data)
             setAllQuestion(response.data)
-
         } catch (e) {
             console.log('error fetching question', e)
         }

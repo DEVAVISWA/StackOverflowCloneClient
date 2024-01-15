@@ -1,2 +1,0 @@
-setQuestionId(question._id)
-                                    <h4><p onClick={() => navigate(`/answer/${question._id}`)}>

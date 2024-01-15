@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Questions from './Questions'
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import NavBar from './NavBar'
 
 
