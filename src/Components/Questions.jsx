@@ -18,7 +18,7 @@ function Questions() {
 
     const fetchAllQuestion = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:3000/ask')
+            const response = await axios.get('https://stackoverfloecloneserver.onrender.com/ask')
             // console.log(response.data)
             setAllQuestion(response.data)
         } catch (e) {

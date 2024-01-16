@@ -29,7 +29,7 @@ function AnswerAllQuestion() {
 
   const fetchAnswer = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:3000/answer/${id}`);
+      const response = await axios.get(`https://stackoverfloecloneserver.onrender.com/answer/${id}`);
       // console.log("particular answer", response.data)
       setAnswer(response.data)
     } catch (e) {
@@ -50,7 +50,7 @@ function AnswerAllQuestion() {
           "userId": JSON.parse(localStorage.getItem('user')).displayName,
           "questionId": id
         }
-        await axios.patch(`http://127.0.0.1:3000/answer/${id}`, payload)
+        await axios.patch(`https://stackoverfloecloneserver.onrender.com/answer/${id}`, payload)
           .then(response => {
             console.log('answer posted successfully', response.data)
             setAnswer(response.data)

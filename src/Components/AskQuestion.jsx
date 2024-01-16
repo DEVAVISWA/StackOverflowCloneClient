@@ -28,7 +28,7 @@ function AskQuestion() {
     }
     console.log('adding new note')
     try {
-      const response = await axios.post('http://127.0.0.1:3000/ask', newQuestionObj, config)
+      const response = await axios.post('https://stackoverfloecloneserver.onrender.com/ask', newQuestionObj, config)
       console.log('question added successfully')
       // console.log(response.data)
       setQuestion({

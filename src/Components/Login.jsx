@@ -26,7 +26,7 @@ function Login() {
   const loginHandler = async (e) => {
     e.preventDefault()
     // console.log(logIn)
-    const response = await fetch('http://127.0.0.1:3000/login', {
+    const response = await fetch('https://stackoverfloecloneserver.onrender.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/json'
@@ -81,7 +81,7 @@ function Login() {
         </form>
       </div>
       <p className='text-center'>
-        Dont have an account? <a href="http://localhost:5173/signup">Sign up</a>
+        Dont have an account? <a href="https://stackoverfloecloneserver.onrender.com/signup">Sign up</a>
       </p>
     </div>
   )
