@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-//REAL Question
+import NavBar from './NavBarLogout'
 
 function Questions() {
     const user = window.localStorage.getItem('user')
@@ -13,18 +13,13 @@ function Questions() {
         console.log('button clicked')
         navigate('/ask')
     }
-    const logouthandler = () => {
-        window.localStorage.removeItem('user')
-        window.localStorage.removeItem('token')
-        navigate('/login')
-    }
     //fetching all the question asked by the all user
     const [allQuestion, setAllQuestion] = useState([])
 
     const fetchAllQuestion = async () => {
         try {
             const response = await axios.get('http://127.0.0.1:3000/ask')
-            console.log(response.data)
+            // console.log(response.data)
             setAllQuestion(response.data)
         } catch (e) {
             console.log('error fetching question', e)
@@ -37,8 +32,7 @@ function Questions() {
 
     return (
         <div>
-            Welcome <b>{userJson.displayName}</b>
-            <button onClick={logouthandler}>Logout</button>
+            <NavBar userJson={userJson} />
             <div className="container text-center">
                 <div className="row align-items-start">
                     <div className="col">

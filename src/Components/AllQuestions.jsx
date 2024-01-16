@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import { Link, useNavigate } from 'react-router-dom'
-//DUMMY
+
 function AllQuestions() {
 
     const [allQuestion, setAllQuestion] = useState([])
@@ -10,7 +10,7 @@ function AllQuestions() {
     const fetchAllQuestion = async () => {
         try {
             const response = await axios.get('http://127.0.0.1:3000/ask')
-            console.log("need", response.data)
+            // console.log("need", response.data)
             setAllQuestion(response.data)
         } catch (e) {
             console.log('error fetching question', e)

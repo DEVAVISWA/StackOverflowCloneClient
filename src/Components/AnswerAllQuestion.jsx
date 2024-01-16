@@ -5,7 +5,7 @@ import axios from 'axios'
 
 function AnswerAllQuestion() {
   const { id } = useParams()
-  
+
   const [answer, setAnswer] = useState({
     title: '',
     createdAt: '',
@@ -30,7 +30,7 @@ function AnswerAllQuestion() {
   const fetchAnswer = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:3000/answer/${id}`);
-      console.log("particular answer", response.data)
+      // console.log("particular answer", response.data)
       setAnswer(response.data)
     } catch (e) {
       console.log('error fetching answer', e)
@@ -63,7 +63,7 @@ function AnswerAllQuestion() {
       navigate('/login')
     }
   }
-  console.log(answer)
+  // console.log(answer)
   return (
     <div>
       <NavBar />

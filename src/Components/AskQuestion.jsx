@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBarLogout'
 
 function AskQuestion() {
   const navigate = useNavigate()
@@ -14,8 +15,7 @@ function AskQuestion() {
   })
   const handleQuestion = async (e) => {
     e.preventDefault()
-    console.log('button clicked', question)
-
+    // console.log('button clicked', question)
     const config = {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -30,7 +30,7 @@ function AskQuestion() {
     try {
       const response = await axios.post('http://127.0.0.1:3000/ask', newQuestionObj, config)
       console.log('question added successfully')
-      console.log(response.data)
+      // console.log(response.data)
       setQuestion({
         title: '',
         details: '',
@@ -43,7 +43,7 @@ function AskQuestion() {
   }
   return (
     <div>
-      welcome {userJson.displayName}
+      <NavBar userJson={userJson}/>
       <div className="container">
         <div className="row">
           <div className="col">

@@ -2,11 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import icon from '../assets/icon.png'
 
-function NavBar() {
+function NavBar({ userJson }) {
     const padd = {
         padding: 15
     }
 
+    const logouthandler = () => {
+        window.localStorage.removeItem('user')
+        window.localStorage.removeItem('token')
+        console.log('Logged out successfully')
+    }
     return (
         <div>
             {/* navbar */}
@@ -38,8 +43,8 @@ function NavBar() {
                         </ul>
                     </div>
                     <form className="d-flex" role="search">
-                        <Link className="btn btn-outline-primary" type="submit" id='padingLoginSignup' to='/login'>Login</Link>
-                        <Link className="btn btn-primary" type="submit" id='padingLoginSignup' to='/signup'>Signup</Link>
+                        <p><b className='userNameNavbarLogout'>{userJson.displayName}</b></p> &nbsp;
+                        <Link className="btn btn-primary" type="submit" id='padingLogout' to='/allQuestions' onClick={logouthandler}>Logout</Link>
                     </form>
                 </div>
             </nav>

@@ -25,8 +25,7 @@ function Login() {
 
   const loginHandler = async (e) => {
     e.preventDefault()
-    console.log(logIn)
-
+    // console.log(logIn)
     const response = await fetch('http://127.0.0.1:3000/login', {
       method: 'POST',
       headers: {
@@ -37,7 +36,7 @@ function Login() {
     const data = await response.json()
     if (response.status == 200) {
       console.log('User logged in successfully')
-      console.log(data)
+      // console.log(data)
       setLogin({
         email: '',
         password: ''
@@ -50,7 +49,7 @@ function Login() {
       navigate('/questions')
     } else {
       console.log('error logging in user')
-      console.log(data)
+      // console.log(data)
       alert("Invalid or wrong user details")
     }
   }
