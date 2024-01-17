@@ -92,7 +92,7 @@ function Signup() {
               <button type='submit' className='btn btn-primary'>Sign up</button>
             </form> <br />
             <div>
-              Already have an account? <a href="/login">Log in</a>
+              Already have an account? <a href="https://celebrated-faun-a8aa0b.netlify.app/login">Log in</a>
             </div>
             <br />
           </div>

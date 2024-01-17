@@ -81,7 +81,7 @@ function Login() {
         </form>
       </div>
       <p className='text-center'>
-        Dont have an account? <a href="https://stackoverfloecloneserver.onrender.com/signup">Sign up</a>
+        Dont have an account? <a href="https://celebrated-faun-a8aa0b.netlify.app/signup">Sign up</a>
       </p>
     </div>
   )
