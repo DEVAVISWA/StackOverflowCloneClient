@@ -53,7 +53,8 @@ function AnswerAllQuestion() {
         await axios.patch(`https://stackoverfloecloneserver.onrender.com/answer/${id}`, payload)
           .then(response => {
             console.log('answer posted successfully', response.data)
-            setAnswer(response.data)
+            setAnswer({...response.data,userAnswer:""})
+            
           })
       } catch (error) {
         console.log('error posting answer', error)
