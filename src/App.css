@@ -42,11 +42,13 @@ h1 {
     font-weight: bold;
 }
 
+
+
 /* developer */
-.container-bottom-to-up {
+/* .container-bottom-to-up {
     overflow: hidden;
     margin: 0px;
-}
+} */
 
 .top-to-bottom {
     animation: 2s top-to-bottom forwards;
@@ -60,20 +62,20 @@ h1 {
 
 @keyframes top-to-bottom {
     from {
-        transform: translateY(-48px);
+        transform: translateX(+350px);
     }
 
     to {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
 /* gamedeveloper */
 
-.container-bottom-to-up {
+/* .container-bottom-to-up {
     overflow: hidden;
     margin: 0px;
-}
+} */
 
 .bottom-to-up {
     animation: 3s bottom-to-up forwards;
@@ -97,10 +99,10 @@ h1 {
 
 /* mobiledeveloper */
 
-.container-bottom-to-up {
+/* .container-bottom-to-up {
     overflow: hidden;
     margin: 0px;
-}
+} */
 
 .top-to-bottom {
     animation: 4s top-to-bottom forwards;
@@ -112,7 +114,7 @@ h1 {
     text-align: left;
 }
 
-@keyframes top-to-bottom {
+/* @keyframes top-to-bottom {
     from {
         transform: translateY(-48px);
     }
@@ -120,13 +122,13 @@ h1 {
     to {
         transform: translateY(0);
     }
-}
+} */
 
 /* datasciebtist */
-.container-bottom-to-up {
+/* .container-bottom-to-up {
     overflow: hidden;
     margin: 0px;
-}
+} */
 
 .bottom-to-up {
     animation: 5s bottom-to-up forwards;
@@ -138,7 +140,7 @@ h1 {
     text-align: left;
 }
 
-@keyframes bottom-to-up {
+/* @keyframes bottom-to-up {
     from {
         transform: translateY(48px);
     }
@@ -146,7 +148,7 @@ h1 {
     to {
         transform: translateX(0);
     }
-}
+} */
 
 .top-to-bottom {
     color: rgb(236, 124, 34);

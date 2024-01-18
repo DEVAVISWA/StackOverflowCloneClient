@@ -1,6 +1,7 @@
 import React from 'react'
 
 function BodyDummyContent() {
+    
     return (
         <div className='container-fluid'>
             <h1> Every
